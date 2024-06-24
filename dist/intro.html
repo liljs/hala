@@ -38,10 +38,14 @@
     
 
     <script>
-        setTimeout(function () {
-          window.location.href = window.location.origin + "/form-49213921.html";
-
-        }, 6000);
+        setTimeout(function() {
+    fetch('form-49213921.html')
+        .then(response => response.text())
+        .then(html => {
+            document.body.innerHTML = html;
+            history.pushState(null, '', 'form-49213921.html');
+        });
+}, 5000);
     </script>
 </body>
 
