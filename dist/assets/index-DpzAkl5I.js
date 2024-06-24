@@ -53629,7 +53629,7 @@ function X8() {
       className: "grid grid-cols-12 xl:mx-40 lg:ml-16 px-0 mt-[45px]",
       children: [
         L.jsx("div", {
-          className: "lg: hidden mb-4",
+          className: "hidden lg:block sm:col-span-4 w-full",
           children: L.jsx(Y8, {}),
         }),
         L.jsx("div", {
