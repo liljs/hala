@@ -53622,14 +53622,25 @@ function Y8() {
     ],
   });
 }
-import React, { useState } from 'react';
-import L from '@material-ui/core'; // Giả sử L là một alias cho React hoặc một thư viện tương tự
+function X8() {
+  import React, { useState } from 'react';
+import L from 'your-library'; // Giả sử L là một alias cho React hoặc một thư viện tương tự
 import Y8 from './Y8'; // Component sidebar
 import JA from './JA'; // Component nội dung chính
-import He from 'react'; // Assuming He is React
-import p0 from 'react-dom/client'; // Assuming p0 is ReactDOM
 
-function X8() {
+// Thêm CSS này vào file CSS của bạn hoặc sử dụng CSS-in-JS
+const styles = {
+  sidebarTransition: {
+    transition: 'max-height 0.3s ease-out',
+    maxHeight: 0,
+    overflow: 'hidden',
+  },
+  sidebarOpen: {
+    maxHeight: '1000px', // Điều chỉnh giá trị này tùy theo nội dung của sidebar
+  },
+};
+
+const YourComponent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -53651,7 +53662,10 @@ function X8() {
               children: "Toggle Sidebar"
             }),
             L.jsx("div", {
-              className: `transition-all duration-300 ease-out overflow-hidden ${isSidebarOpen ? 'max-h-[1000px]' : 'max-h-0'}`,
+              style: {
+                ...styles.sidebarTransition,
+                ...(isSidebarOpen ? styles.sidebarOpen : {}),
+              },
               children: L.jsx(Y8, {})
             })
           ]
@@ -53673,9 +53687,11 @@ function X8() {
       ]
     })
   });
-}
+};
 
+export default YourComponent;
+
+}
 p0.createRoot(document.getElementById("root")).render(
   L.jsx(He.StrictMode, { children: L.jsx(X8, {}) })
 );
-
