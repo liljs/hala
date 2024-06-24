@@ -53622,25 +53622,60 @@ function Y8() {
     ],
   });
 }
+import React, { useState } from 'react';
+import L from 'your-library'; // Giả sử L là một alias cho React hoặc một thư viện tương tự
+import Y8 from './Y8'; // Component sidebar
+import JA from './JA'; // Component nội dung chính
+import He from 'react'; // Assuming He is React
+import p0 from 'react-dom/client'; // Assuming p0 is ReactDOM
+
 function X8() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return L.jsx("div", {
     className: "",
     children: L.jsxs("div", {
-      className: "grid grid-cols-12 xl:mx-40 lg:ml-16 px-0 mt-[45px]",
+      className: "xl:mx-40 lg:ml-16 px-0 mt-[45px]",
       children: [
-        L.jsx("div", {
-          className: "hidden lg:block sm:col-span-4 w-full",
-          children: L.jsx(Y8, {}),
+        // Sidebar/Header cho mobile
+        L.jsxs("div", {
+          className: "lg:hidden mb-4",
+          children: [
+            L.jsx("button", {
+              className: "p-2 bg-gray-200 rounded",
+              onClick: toggleSidebar,
+              children: "Toggle Sidebar"
+            }),
+            L.jsx("div", {
+              className: `transition-all duration-300 ease-out overflow-hidden ${isSidebarOpen ? 'max-h-[1000px]' : 'max-h-0'}`,
+              children: L.jsx(Y8, {})
+            })
+          ]
         }),
-        L.jsx("div", {
-          className:
-            "col-span-12 lg:col-span-8 border-l-[1px] border-[#DEE3E9] md:pl-[35px]",
-          children: L.jsx(JA, {}),
-        }),
-      ],
-    }),
+        // Grid layout cho desktop
+        L.jsxs("div", {
+          className: "grid grid-cols-12",
+          children: [
+            L.jsx("div", {
+              className: "hidden lg:block lg:col-span-4 w-full",
+              children: L.jsx(Y8, {})
+            }),
+            L.jsx("div", {
+              className: "col-span-12 lg:col-span-8 border-l-[1px] border-[#DEE3E9] md:pl-[35px]",
+              children: L.jsx(JA, {})
+            })
+          ]
+        })
+      ]
+    })
   });
 }
+
 p0.createRoot(document.getElementById("root")).render(
   L.jsx(He.StrictMode, { children: L.jsx(X8, {}) })
 );
+
