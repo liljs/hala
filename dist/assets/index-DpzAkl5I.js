@@ -53234,7 +53234,7 @@ function Y8() {
       }, 2e3));
   };
   return L.jsxs("div", {
-    className: "ml-3 max-w-xs ",
+    className: "mr-3 max-w-xs ",
     children: [
       L.jsx("div", { className: "w-[72px] mb-4", children: L.jsx(q8, {}) }),
       L.jsx("div", {
