@@ -53623,10 +53623,7 @@ function Y8() {
   });
 }
 import React, { useState } from 'react';
-import Y8 from './X8'; // Component sidebar
-import JA from './JA'; // Component nội dung chính
-import He from 'react'; // Assuming He is React
-import p0 from 'react-dom/client'; // Assuming p0 is ReactDOM
+import X8 from './X8'; // Component sidebar
 
 function X8() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
