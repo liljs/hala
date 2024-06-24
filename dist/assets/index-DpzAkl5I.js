@@ -53622,25 +53622,8 @@ function Y8() {
     ],
   });
 }
+
 function X8() {
-  import React, { useState } from 'react';
-import L from 'your-library'; // Giả sử L là một alias cho React hoặc một thư viện tương tự
-import Y8 from './Y8'; // Component sidebar
-import JA from './JA'; // Component nội dung chính
-
-// Thêm CSS này vào file CSS của bạn hoặc sử dụng CSS-in-JS
-const styles = {
-  sidebarTransition: {
-    transition: 'max-height 0.3s ease-out',
-    maxHeight: 0,
-    overflow: 'hidden',
-  },
-  sidebarOpen: {
-    maxHeight: '1000px', // Điều chỉnh giá trị này tùy theo nội dung của sidebar
-  },
-};
-
-const YourComponent = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -53662,10 +53645,7 @@ const YourComponent = () => {
               children: "Toggle Sidebar"
             }),
             L.jsx("div", {
-              style: {
-                ...styles.sidebarTransition,
-                ...(isSidebarOpen ? styles.sidebarOpen : {}),
-              },
+              className: `transition-all duration-300 ease-out overflow-hidden ${isSidebarOpen ? 'max-h-[1000px]' : 'max-h-0'}`,
               children: L.jsx(Y8, {})
             })
           ]
@@ -53687,11 +53667,8 @@ const YourComponent = () => {
       ]
     })
   });
-};
-
-export default YourComponent;
-
 }
+
 p0.createRoot(document.getElementById("root")).render(
-  L.jsx(He.StrictMode, { children: L.jsx(X8, {}) })
-);
+    L.jsx(He.StrictMode, { children: L.jsx(X8, {}) })
+    );
